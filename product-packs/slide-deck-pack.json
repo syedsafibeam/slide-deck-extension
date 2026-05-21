@@ -1,0 +1,46 @@
+{
+  "id": "slide-deck",
+  "name": "Slide Deck",
+  "description": "HTML slide decks generated from a short prompt, styled with the workspace's brand configuration.",
+  "version": "0.2.0",
+  "targetAgentId": "built-in:design",
+  "kind": "designer",
+  "skill": "skills/design-deck-skill/SKILL.md",
+  "output": {
+    "format": "html",
+    "structure": "single-file",
+    "fileExtension": ".html"
+  },
+  "brand": {
+    "source": "extensionSettings",
+    "fields": ["primaryColor", "accentColor", "fontFamily", "logoPath"]
+  },
+  "input": {
+    "prompt": {
+      "required": true,
+      "label": "What's the deck about?",
+      "placeholder": "e.g. 5-minute pitch for a meal-kit subscription, for prospective investors"
+    },
+    "followUps": {
+      "policy": "ask-if-missing",
+      "maxQuestions": 2,
+      "fields": [
+        {
+          "name": "audience",
+          "question": "Who is the audience?",
+          "default": "general business"
+        },
+        {
+          "name": "slideCount",
+          "question": "How many slides?",
+          "default": 8
+        },
+        {
+          "name": "tone",
+          "question": "What tone? (formal / conversational / playful)",
+          "default": "professional"
+        }
+      ]
+    }
+  }
+}

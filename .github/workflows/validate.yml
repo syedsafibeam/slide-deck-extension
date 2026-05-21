@@ -1,0 +1,40 @@
+name: Validate Extension
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate manifest
+        run: pnpm run validate:extension
+
+      - name: Check version bump
+        run: |
+          if git diff HEAD~1 -- beam-extension.json | grep -q '"version"'; then
+            echo "Version bumped ✓"
+          else
+            if git diff HEAD~1 -- beam-extension.json | grep -q '^[+-]'; then
+              echo "::error::Manifest changed but version was not bumped in beam-extension.json"
+              exit 1
+            fi
+          fi

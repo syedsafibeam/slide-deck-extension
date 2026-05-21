@@ -1,0 +1,49 @@
+{
+  "id": "beam-slide-deck",
+  "name": "Slide Deck",
+  "version": "0.2.0",
+  "description": "Generates standalone HTML slide decks from a short prompt, using the workspace's saved brand configuration.",
+  "author": "Beam Hackathon Team",
+  "icon": "Presentation",
+  "primaryColor": "#003D8F",
+  "accentColor": "blue",
+  "devRules": "RULES.md",
+  "contributes": {
+    "prompts": ["prompts/extension-context.md"],
+    "productPacks": ["product-packs/slide-deck-pack.json"],
+    "settingsSchema": {
+      "fields": [
+        {
+          "name": "primaryColor",
+          "label": "Primary color",
+          "type": "text",
+          "default": "#003D8F",
+          "description": "Hex color used for slide headings and structural accents."
+        },
+        {
+          "name": "accentColor",
+          "label": "Accent color",
+          "type": "text",
+          "default": "#FFB300",
+          "description": "Hex color used for highlights and callouts on body content."
+        },
+        {
+          "name": "fontFamily",
+          "label": "Font family",
+          "type": "text",
+          "default": "Inter, system-ui, sans-serif",
+          "description": "CSS font-family stack applied to every slide."
+        },
+        {
+          "name": "logoPath",
+          "label": "Logo path",
+          "type": "text",
+          "description": "Path or URL to a logo shown on the title slide and footer. Leave blank to omit."
+        }
+      ]
+    }
+  },
+  "permissions": ["copilot.tools", "workspace.storage"],
+  "integrations": [],
+  "suggestedFor": ["hackathon"]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "example-item",
+  "name": "Example Item",
+  "subtitle": "Things this extension tracks",
+  "icon": "FileText",
+  "fields": [
+    { "name": "title", "type": "text", "required": true },
+    {
+      "name": "status",
+      "type": "select",
+      "required": true,
+      "options": ["New", "In Progress", "Done"]
+    },
+    {
+      "name": "priority",
+      "type": "select",
+      "options": ["High", "Medium", "Low"]
+    },
+    { "name": "notes", "type": "richtext" }
+  ],
+  "views": ["list", "detail", "kanban:status"],
+  "defaultView": "list",
+  "defaultSort": { "field": "createdAt", "direction": "desc" },
+  "pagePrompt": "When viewing example items, offer to: create a new item, classify pending items, or summarize recent activity.",
+  "pageActions": [
+    {
+      "label": "Create with AI",
+      "prompt": "Create a new example item. Ask the user for title and priority. Use write_extension_data to save."
+    }
+  ]
+}
