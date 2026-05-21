@@ -1,49 +1,63 @@
 {
   "id": "beam-slide-deck",
-  "name": "Slide Deck",
-  "version": "0.2.0",
-  "description": "Generates standalone HTML slide decks from a short prompt, using the workspace's saved brand configuration.",
+  "name": "Slide Generator Agent",
+  "version": "0.4.1",
+  "description": "Specialized presentation-design agent. Always asks clarifying questions about audience, structure, and takeaway, then generates a standalone HTML slide deck styled with the workspace's DeckDesignProfile.",
   "author": "Beam Hackathon Team",
   "icon": "Presentation",
   "primaryColor": "#003D8F",
   "accentColor": "blue",
   "devRules": "RULES.md",
   "contributes": {
+    "entities": ["entities/deck.json"],
     "prompts": ["prompts/extension-context.md"],
+    "agents": [
+      {
+        "id": "slide-generator",
+        "name": "Slide Generator",
+        "description": "Specialized presentation-design agent. Always asks clarifying questions about the presentation (audience, angle, takeaway, structure) before drafting an outline and generating a standalone HTML deck styled with the workspace's DeckDesignProfile.",
+        "instructionsFile": "agents/slide-generator/instructions.md",
+        "tools": [
+          "ext_beam-slide-deck_query_data",
+          "ext_beam-slide-deck_write_data",
+          "search_knowledge_base",
+          "read_file"
+        ],
+        "modelTier": "balanced",
+        "trigger": { "type": "manual" }
+      }
+    ],
     "productPacks": ["product-packs/slide-deck-pack.json"],
     "settingsSchema": {
+      "title": "Slide Generator settings",
+      "description": "Where to find the workspace's DeckDesignProfile. The full brand, typography, and default-slide config lives in that JSON file — see presets/beam-default.json for the shape.",
       "fields": [
         {
-          "name": "primaryColor",
-          "label": "Primary color",
+          "key": "profilePath",
           "type": "text",
-          "default": "#003D8F",
-          "description": "Hex color used for slide headings and structural accents."
+          "label": "Design profile path",
+          "description": "Workspace-relative path to the DeckDesignProfile JSON file. Copy presets/beam-default.json to this location to seed.",
+          "default": ".beam/deck-profile.json"
         },
         {
-          "name": "accentColor",
-          "label": "Accent color",
-          "type": "text",
-          "default": "#FFB300",
-          "description": "Hex color used for highlights and callouts on body content."
-        },
-        {
-          "name": "fontFamily",
-          "label": "Font family",
-          "type": "text",
-          "default": "Inter, system-ui, sans-serif",
-          "description": "CSS font-family stack applied to every slide."
-        },
-        {
-          "name": "logoPath",
-          "label": "Logo path",
-          "type": "text",
-          "description": "Path or URL to a logo shown on the title slide and footer. Leave blank to omit."
+          "key": "defaultPreset",
+          "type": "select",
+          "label": "Default preset",
+          "description": "Preset used when the profile file is missing or invalid. Must match a file under presets/<name>.json in this extension.",
+          "default": "beam-default",
+          "options": [
+            { "value": "beam-default", "label": "Beam Default (light, 16:9)" },
+            { "value": "beam-pitch-deck", "label": "Beam Pitch Deck (dark, with About + Live Demo)" }
+          ]
         }
       ]
     }
   },
-  "permissions": ["copilot.tools", "workspace.storage"],
+  "agentBindings": {
+    "readEntities": ["deck"],
+    "writeEntities": ["deck"]
+  },
+  "permissions": ["copilot.tools", "sidebar.items", "workspace.storage"],
   "integrations": [],
   "suggestedFor": ["hackathon"]
 }

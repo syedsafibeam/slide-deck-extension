@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "preset": "beam-pitch-deck",
+  "brand": {
+    "name": "Beam",
+    "primary": "#003D8F",
+    "accent": "#FFB300",
+    "background": "#0B0F19",
+    "foreground": "#F5F7FB",
+    "logoPath": "assets/logo-dark.svg"
+  },
+  "typography": {
+    "headingFont": "Inter, system-ui, sans-serif",
+    "bodyFont": "Inter, system-ui, sans-serif",
+    "minFontPx": 20
+  },
+  "defaults": {
+    "theme": "dark",
+    "includeAboutSlide": true,
+    "includeLiveDemoSlide": true,
+    "outputAspectRatio": "16:9"
+  },
+  "agentGuidelinesPath": ".beam/deck-guidelines.md",
+  "lockedLayouts": ["title", "about", "live-demo"],
+  "decksDir": "decks/pitch"
+}

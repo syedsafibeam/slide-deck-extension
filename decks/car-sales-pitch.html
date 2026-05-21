@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>Find Your Next Car</title>
+  <style>
+    :root {
+      --primary: #FFFFFF;
+      --accent: #4DA3FF;
+      --bg: #000814;
+      --fg: #EAEAEA;
+      --muted: #9BA3B0;
+      --heading-font: Inter, system-ui, sans-serif;
+      --body-font: Inter, system-ui, sans-serif;
+      --min-font: 18px;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 22% 95%, rgba(77, 163, 255, 0.55), transparent 65%),
+        radial-gradient(ellipse 80% 60% at 0% 105%, rgba(20, 70, 180, 0.45), transparent 70%),
+        #000814;
+      background-attachment: fixed;
+      color: var(--fg);
+      font-family: var(--body-font);
+      font-size: var(--min-font);
+      min-height: 100vh;
+    }
+    .slide {
+      aspect-ratio: 16 / 9;
+      min-height: 100vh;
+      padding: 4rem;
+      box-sizing: border-box;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+    }
+    body.presenting .slide { display: none; }
+    body.presenting .slide.active { display: flex; }
+    .counter {
+      position: fixed;
+      bottom: 1rem;
+      left: 2rem;
+      font-size: 0.8rem;
+      opacity: 0.6;
+      color: var(--muted);
+    }
+    body:not(.presenting) .counter { display: none; }
+    .slide h1, .slide h2 {
+      color: var(--primary);
+      font-family: var(--heading-font);
+      margin: 0 0 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .slide h1 { font-size: 4rem; line-height: 1.05; }
+    .slide h2 { font-size: 2.5rem; line-height: 1.1; }
+    .slide .accent { color: var(--accent); }
+    .slide ul { font-size: 1.5rem; line-height: 1.6; color: var(--fg); }
+    .slide p { color: var(--muted); font-size: 1.25rem; max-width: 60ch; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      width: fit-content;
+      margin-bottom: 2rem;
+    }
+    .badge::before {
+      content: "";
+      display: inline-block;
+      width: 14px;
+      height: 10px;
+      background:
+        linear-gradient(white, white) 0 0 / 100% 2px no-repeat,
+        linear-gradient(white, white) 0 4px / 70% 2px no-repeat,
+        linear-gradient(white, white) 0 8px / 40% 2px no-repeat;
+    }
+    .slide aside.notes { display: none; }
+    .title-slide { justify-content: flex-start; padding-top: 6rem; }
+    .title-slide h1 { max-width: 14ch; }
+    .footer { position: fixed; bottom: 1rem; right: 2rem; font-size: 0.8rem; opacity: 0.6; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <section class="slide title-slide">
+    <div class="badge">Beam AI</div>
+    <h1>Find Your <span class="accent">Next Car</span></h1>
+    <p>A straightforward path from showroom to driveway — transparent pricing, certified vehicles, financing on your terms.</p>
+    <aside class="notes">Open warmly. Acknowledge that car buying is a big decision and that today's goal is to make it simple.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>About Us</h2>
+    <ul>
+      <li>[Dealership name] — serving [region] since [year]</li>
+      <li>[N] vehicles sold, [rating] average customer review</li>
+    </ul>
+    <aside class="notes">Replace placeholders with the dealership's real numbers before presenting. Keep this slide to 20 seconds — credibility, then move on.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>Buying a Car Shouldn't Be This Hard</h2>
+    <ul>
+      <li>Hidden fees and last-minute price changes</li>
+      <li>Hours lost to paperwork and negotiation</li>
+      <li>Uncertainty about what a car is really worth</li>
+    </ul>
+    <aside class="notes">Name the buyer's frustration before pitching the solution. Pause after this slide — let them nod.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>Our Lineup</h2>
+    <ul>
+      <li>Sedans — fuel-efficient daily drivers</li>
+      <li>SUVs &amp; Crossovers — family-ready, all-weather</li>
+      <li>Electric &amp; Hybrid — lower running costs, modern tech</li>
+      <li>Certified Pre-Owned — full inspection, manufacturer warranty</li>
+    </ul>
+    <aside class="notes">Tailor the spoken examples to what the customer asked about on the lot. Don't read all four — pick two.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>Why Buy From Us</h2>
+    <ul>
+      <li><span class="accent">No-haggle pricing</span> — the sticker is the price</li>
+      <li>[N]-point certified inspection on every vehicle</li>
+      <li>[N]-day / [N]-mile return policy</li>
+      <li>Complimentary first service</li>
+    </ul>
+    <aside class="notes">This is the trust slide. Replace placeholders with the dealership's actual policy numbers — vague claims kill credibility here.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>Financing Made Simple</h2>
+    <ul>
+      <li>Pre-approval in under 10 minutes</li>
+      <li>Flexible terms — [range] months, rates from [%]</li>
+      <li>Instant trade-in valuation</li>
+      <li>Lease or buy — we'll model both for your budget</li>
+    </ul>
+    <aside class="notes">Offer to run live numbers on the spot. Have the financing calculator open before you reach this slide.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>What Our Customers Say</h2>
+    <ul>
+      <li>"[Short testimonial]" — [Customer name], [year/model]</li>
+      <li>"[Short testimonial]" — [Customer name], [year/model]</li>
+      <li>[N]% of buyers return for their next car</li>
+    </ul>
+    <aside class="notes">Replace with real quotes — never fabricate testimonials. If you only have one good quote, use one and drop the second bullet.</aside>
+  </section>
+
+  <section class="slide">
+    <h2>Next Steps</h2>
+    <ul>
+      <li>Book a test drive — today or this week</li>
+      <li>Bring your current car for an instant trade-in quote</li>
+      <li>Talk to [Name] — [phone] · [email]</li>
+    </ul>
+    <aside class="notes">Close with a concrete ask. Don't end on "let me know" — pick a time on their calendar before they leave.</aside>
+  </section>
+
+  <div class="footer">Beam · Find Your Next Car</div>
+  <div class="counter"></div>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const counter = document.querySelector('.counter');
+      let i = 0;
+
+      function render() {
+        slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        counter.textContent = (i + 1) + ' / ' + slides.length;
+      }
+      function go(delta) {
+        i = Math.max(0, Math.min(slides.length - 1, i + delta));
+        render();
+      }
+      function enterPresenting() {
+        document.body.classList.add('presenting');
+        render();
+      }
+      function exitPresenting() {
+        document.body.classList.remove('presenting');
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (!document.body.classList.contains('presenting')) {
+          if (e.key === 'p' || e.key === 'P') enterPresenting();
+          return;
+        }
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+        else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+        else if (e.key === 'Home') { e.preventDefault(); i = 0; render(); }
+        else if (e.key === 'End') { e.preventDefault(); i = slides.length - 1; render(); }
+        else if (e.key === 'Escape') exitPresenting();
+      });
+
+      // Default to one-slide-per-page (presenting) mode. Add #scroll to the URL for stacked view.
+      if (location.hash !== '#scroll') enterPresenting();
+    })();
+  </script>
+</body>
+</html>

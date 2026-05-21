@@ -1,0 +1,37 @@
+{
+  "id": "deck",
+  "name": "Deck",
+  "subtitle": "Generated HTML slide decks",
+  "icon": "Presentation",
+  "fields": [
+    { "name": "title", "type": "text", "required": true },
+    { "name": "prompt", "type": "richtext", "required": true },
+    {
+      "name": "status",
+      "type": "select",
+      "required": true,
+      "options": ["Drafting", "Outline Ready", "Generated", "Failed"]
+    },
+    { "name": "audience", "type": "text" },
+    { "name": "slideCount", "type": "number" },
+    {
+      "name": "tone",
+      "type": "select",
+      "options": ["formal", "professional", "conversational", "playful"]
+    },
+    { "name": "presetUsed", "type": "text" },
+    { "name": "outputPath", "type": "text" },
+    { "name": "profileSnapshot", "type": "richtext" },
+    { "name": "notes", "type": "richtext" }
+  ],
+  "views": ["list", "detail", "kanban:status", "card"],
+  "defaultView": "kanban:status",
+  "defaultSort": { "field": "createdAt", "direction": "desc" },
+  "pagePrompt": "When viewing decks, offer to: create a new deck, regenerate a failed one, summarize what's in progress, or open the output file.",
+  "pageActions": [
+    {
+      "label": "Create with AI",
+      "prompt": "Start a new deck. Ask the user for the topic in one sentence. Then invoke the Slide Generator agent to load the active DeckDesignProfile, produce an outline, ask up to two follow-ups (audience, slide count, tone), and generate the HTML. Save the file under workspace.storage at profile.decksDir/<deck-id>.html and write the path to the deck record's outputPath."
+    }
+  ]
+}
