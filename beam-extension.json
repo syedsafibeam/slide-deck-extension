@@ -1,7 +1,7 @@
 {
   "id": "beam-slide-deck",
   "name": "Slide Generator Agent",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Specialized presentation-design agent. Always asks clarifying questions about audience, structure, and takeaway, then generates a standalone HTML slide deck styled with the workspace's DeckDesignProfile.",
   "author": "Beam Hackathon Team",
   "icon": "Presentation",
@@ -24,7 +24,8 @@
           "read_file"
         ],
         "modelTier": "balanced",
-        "trigger": { "type": "manual" }
+        "trigger": { "type": "manual" },
+        "capabilities": ["decks"]
       }
     ],
     "productPacks": ["product-packs/slide-deck-pack.json"],

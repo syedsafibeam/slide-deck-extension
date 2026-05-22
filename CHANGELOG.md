@@ -2,6 +2,16 @@
 
 All notable changes to this extension are documented in this file. Follow [semver](https://semver.org/): bump the manifest `version` and add an entry here on every manifest change.
 
+## [0.7.0] - 2026-05-22
+
+### Added
+- `entities/deck.json` gains `openAction: { target: 'agent-deck-panel', pathField: 'outputPath', agentId: 'ext:beam-slide-deck:slide-generator' }`. Clicking any deck row anywhere (list, card, kanban, dashboard) now opens its generated HTML in the Slide Generator agent's right-rail decks panel instead of the entity edit form. Rows without a generated `outputPath` (status: Drafting / Outline Ready / Failed) still fall back to the form so partial records remain editable.
+- `slide-generator` agent declares `capabilities: ['decks']`, which surfaces the right-rail Decks tab on its workspace page (same panel previously hardwired to the Designer Agent).
+- A dedicated **DeckDashboardView** gallery is registered against `beam-slide-deck:deck`. The Dashboard tab now shows every deck as a card with title, status badge, audience, slide count, and tone — with a New deck button wired to the same chat prompt as `createAction`.
+
+### Requires
+- Host app `dev-prism-mac` with (a) `EntityOpenAction` support on `EntitySchema`, (b) `ExtensionAgentDeclaration.capabilities` plumbed through `ExtensionAgentExecutor` into `UnifiedAgent.capabilities`, (c) `openDeckInSidebar` / `openDesignArtifactPathInSidebar` generalized to accept an `agentId`, and (d) `DeckDashboardView` registered in `entity-dashboard-registry`. Older host builds ignore `openAction` (rows open the form) and `capabilities` (the Decks tab won't appear on the Slide Generator agent), and won't have a registered dashboard panel.
+
 ## [0.6.0] - 2026-05-22
 
 ### Changed
