@@ -28,10 +28,9 @@
   "defaultView": "card",
   "defaultSort": { "field": "createdAt", "direction": "desc" },
   "pagePrompt": "When viewing decks, offer to: create a new deck, regenerate a failed one, summarize what's in progress, or open the output file.",
-  "pageActions": [
-    {
-      "label": "Create with AI",
-      "prompt": "Start a new deck. Ask the user for the topic in one sentence. Then invoke the Slide Generator agent to load the active DeckDesignProfile, produce an outline, ask up to two follow-ups (audience, slide count, tone), and generate the HTML. Save the file under workspace.storage at profile.decksDir/<deck-id>.html and write the path to the deck record's outputPath."
-    }
-  ]
+  "createAction": {
+    "mode": "chat",
+    "label": "New deck",
+    "prompt": "Start a new deck. Ask the user for the topic in one sentence. Then invoke the Slide Generator agent to load the active DeckDesignProfile, produce an outline, ask up to two follow-ups (audience, slide count, tone), and generate the HTML. Save the file under workspace.storage at profile.decksDir/<deck-id>.html and write the path to the deck record's outputPath."
+  }
 }

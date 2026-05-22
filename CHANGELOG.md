@@ -2,6 +2,15 @@
 
 All notable changes to this extension are documented in this file. Follow [semver](https://semver.org/): bump the manifest `version` and add an entry here on every manifest change.
 
+## [0.6.0] - 2026-05-22
+
+### Changed
+- Deck creation now routes through chat instead of the entity form. The primary `+ New deck` button (and ⌘N) sends the slide-generator prompt to the copilot in a new thread — no form modal in between.
+- Replaced the old `pageActions[0]` "Create with AI" overflow item with a top-level `createAction: { mode: 'chat', label: 'New deck', prompt: ... }` on the entity. The prompt is unchanged; only the entry point moved (overflow → primary button).
+
+### Requires
+- Host app `dev-prism-mac` with `EntityCreateAction` support on `EntitySchema` (added in the same change). Older host builds will ignore `createAction` and fall back to the form-based flow.
+
 ## [0.5.0] - 2026-05-22
 
 ### Added
