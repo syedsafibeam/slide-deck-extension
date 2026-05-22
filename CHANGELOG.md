@@ -2,6 +2,18 @@
 
 All notable changes to this extension are documented in this file. Follow [semver](https://semver.org/): bump the manifest `version` and add an entry here on every manifest change.
 
+## [0.5.0] - 2026-05-22
+
+### Added
+- `dashboard` view to the `deck` entity (counts-by-status overview, rendered by the host app's built-in dashboard view).
+
+### Changed
+- `deck.defaultView` flipped from `kanban:status` to `card` so the gallery is what opens first — title, status/tone badges, and audience/slideCount meta are surfaced by `EntityCardView`.
+- The existing `pageActions[0]` ("Create with AI") stays as the chat-driven create affordance; it already routes to the `slide-generator` agent and is reused by every view tab.
+
+### Notes
+- The host app's entity view kinds are a closed enum (`list | detail | kanban:* | card | dashboard`) — a custom `gallery` kind that embeds `prism-decks-runtime` to render real slide previews would require host-app changes (a card-renderer hook + structured deck data on the entity), not just manifest edits.
+
 ## [0.4.1] - 2026-05-21
 
 ### Changed

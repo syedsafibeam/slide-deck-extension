@@ -24,8 +24,8 @@
     { "name": "profileSnapshot", "type": "richtext" },
     { "name": "notes", "type": "richtext" }
   ],
-  "views": ["list", "detail", "kanban:status", "card"],
-  "defaultView": "kanban:status",
+  "views": ["list", "detail", "kanban:status", "card", "dashboard"],
+  "defaultView": "card",
   "defaultSort": { "field": "createdAt", "direction": "desc" },
   "pagePrompt": "When viewing decks, offer to: create a new deck, regenerate a failed one, summarize what's in progress, or open the output file.",
   "pageActions": [
